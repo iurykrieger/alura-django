@@ -1,8 +1,9 @@
 from django.conf.urls import url, include
 from django.contrib import admin
 
-from perfis import views
+from perfis.views import index, profile
 
 urlpatterns = [
-    url(r'^$', views.index, name='index')
+    url(r'^$', index, name='index'),
+    url(r'^profiles/(?P<profile_id>\d+)$', profile, name='profiles')
 ]
