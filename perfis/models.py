@@ -1,10 +1,9 @@
 from django.db import models
 
 
-class Profile(object):
+class Profile(models.Model):
 
-    def __init__(self, name='', email='', phone='', name_company=''):
-        self.name = name
-        self.email = email
-        self.phone = phone
-        self.name_company = name_company
+    name = models.CharField(max_length=255, null=False)
+    email = models.CharField(max_length=255, null=False)
+    phone = models.CharField(max_length=15, null=False)
+    name_company = models.CharField(max_length=255, null=False)
