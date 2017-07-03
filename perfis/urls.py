@@ -5,5 +5,5 @@ from perfis.views import index, profile
 
 urlpatterns = [
     url(r'^$', index, name='index'),
-    url(r'^profiles/(?P<profile_id>\d+)$', profile, name='profiles')
+    url(r'^profiles/(?P<profile_id>\d+)$', profile, name='profile')
 ]

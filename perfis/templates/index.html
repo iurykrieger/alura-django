@@ -10,6 +10,15 @@
 
 <body>
     <h1>Bem vindo ao Connectedin!</h1>
+    {% if profiles %}
+        <ul>
+            {% for profile in profiles %}
+                <li><a href="{% url 'profile' profile.id %}">{{ profile.name }} / {{ profile.email }}</a></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Nenhum perfil encontrado</p>
+    {% endif %}
 </body>
 
 </html>
