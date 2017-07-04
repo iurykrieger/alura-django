@@ -13,6 +13,8 @@
 
     <h3>{{profile.name}} | {{profile.email}}</h3>
     <h4>{{profile.name_company}} | {{profile.phone}}</h4>
+
+    <a href="{% url 'invite' profile.id %}">Convidar</a>
 </body>
 
 </html>

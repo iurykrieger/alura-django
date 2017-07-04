@@ -1,9 +1,10 @@
 from django.conf.urls import url, include
 from django.contrib import admin
 
-from perfis.views import index, profile
+from perfis import views
 
 urlpatterns = [
-    url(r'^$', index, name='index'),
-    url(r'^profiles/(?P<profile_id>\d+)$', profile, name='profile')
+    url(r'^$', views.index, name='index'),
+    url(r'^profiles/(?P<profile_id>\d+)$', views.profile, name='detail'),
+    url(r'^profiles/(?P<invited_profile>\d+)/invite$', views.invite, name='invite')
 ]

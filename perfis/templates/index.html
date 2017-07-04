@@ -13,7 +13,7 @@
     {% if profiles %}
         <ul>
             {% for profile in profiles %}
-                <li><a href="{% url 'profile' profile.id %}">{{ profile.name }} / {{ profile.email }}</a></li>
+                <li><a href="{% url 'detail' profile.id %}">{{ profile.name }} / {{ profile.email }}</a></li>
             {% endfor %}
         </ul>
     {% else %}
