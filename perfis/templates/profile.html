@@ -1,20 +1,24 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+{% extends "base.html" %} 
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Connectedin</title>
-</head>
+{% block body %}
 
-<body>
-    <h1>Detalhe Perfil</h1>
+<!-- Content -->
+<div class="row">
 
-    <h3>{{profile.name}} | {{profile.email}}</h3>
-    <h4>{{profile.name_company}} | {{profile.phone}}</h4>
+    <div class="col-lg-12">
+        <h2 style="margin-top: 0">{{ profile.name }}</h2>
 
-    <a href="{% url 'invite' profile.id %}">Convidar</a>
-</body>
+        <!-- Address -->
+        <address>
+            <strong>{{ profile.name_company }}</strong><br>
+            <abbr title="Telefone">Tel:</abbr> {{ profile.phone }} <br>
+            <a href="mailto:{{ profile.email }}">{{ profile.email }}</a>
+        </address>
+        <!-- End Address -->
 
-</html>
+        <a href="{% url 'invite' profile.id %}">Convidar</a>
+    </div>
+</div>
+<!-- End Content -->
+
+{% endblock body %}

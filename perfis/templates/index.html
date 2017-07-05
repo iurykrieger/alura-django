@@ -1,24 +1,51 @@
-<!DOCTYPE html>
-<html lang="en">
+<!-- Extends -->
+{% extends "base.html" %} {% block body %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
+<!-- Content -->
+<div class="col-lg-12">
+    <!-- Profiles -->
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <strong>Todos os Perfis</strong>
+        </div>
 
-<body>
-    <h1>Bem vindo ao Connectedin!</h1>
-    {% if profiles %}
-        <ul>
-            {% for profile in profiles %}
-                <li><a href="{% url 'detail' profile.id %}">{{ profile.name }} / {{ profile.email }}</a></li>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <p>Nenhum perfil encontrado</p>
-    {% endif %}
-</body>
+        <div class="panel-body">
+            {% if profiles %}
+            <ul class="list-group">
+                {% for profile in profiles %}
+                <li class="list-group-item"><a href="{% url 'detail' profile.id %}">{{ profile.name }} / {{ profile.email }}</a></li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <p>Nenhum perfil encontrado</p>
+            {% endif %}
+        </div>
+    </div>
+    <!-- End Profiles -->
 
-</html>
+    <!-- Invitations -->
+    <div class="panel panel-default">
+        {% with invitations_total=logged_profile.invitations_received.count %}
+        <div class="panel-heading">
+            <strong>Você tem {{ invitations_total }} convite{{ invitations_total | pluralize }} aguardando aprovação</strong>
+        </div>
+        <div class="panel-body">
+            {% if invitations_total > 0 %}
+            <ul class="list-group">
+                {% for invitation in logged_profile.invitations_received.all %}
+                <li class="list-group-item">{{invitation.inviter.name}}
+                    <a href="#" class="pull-right">Aceitar</a>
+                </li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <p>Nenhum convite recebido ;(</p>
+            {% endif %}
+        </div>
+        {% endwith %}
+    </div>
+    <!-- End Invitations -->
+</div>
+<!-- End Content -->
+
+{% endblock body %}
