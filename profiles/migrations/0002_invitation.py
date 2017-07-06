@@ -9,7 +9,7 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('perfis', '0001_initial'),
+        ('profiles', '0001_initial'),
     ]
 
     operations = [
@@ -17,8 +17,8 @@ class Migration(migrations.Migration):
             name='Invitation',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('invited', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='invitations_received', to='perfis.Profile')),
-                ('inviter', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='invitations_sent', to='perfis.Profile')),
+                ('invited', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='invitations_received', to='profiles.Profile')),
+                ('inviter', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='invitations_sent', to='profiles.Profile')),
             ],
         ),
     ]

@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from perfis.models import Profile, Invitation
+from profiles.models import Profile, Invitation
 
 
 def index(request):

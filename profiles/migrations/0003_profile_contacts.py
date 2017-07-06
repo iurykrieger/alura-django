@@ -8,13 +8,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('perfis', '0002_invitation'),
+        ('profiles', '0002_invitation'),
     ]
 
     operations = [
         migrations.AddField(
             model_name='profile',
             name='contacts',
-            field=models.ManyToManyField(related_name='_profile_contacts_+', to='perfis.Profile'),
+            field=models.ManyToManyField(related_name='_profile_contacts_+', to='profiles.Profile'),
         ),
     ]
