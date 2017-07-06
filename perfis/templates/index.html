@@ -34,7 +34,7 @@
             <ul class="list-group">
                 {% for invitation in logged_profile.invitations_received.all %}
                 <li class="list-group-item">{{invitation.inviter.name}}
-                    <a href="#" class="pull-right">Aceitar</a>
+                    <a href="{% url 'accept' invitation.id %}" class="pull-right">Aceitar</a>
                 </li>
                 {% endfor %}
             </ul>

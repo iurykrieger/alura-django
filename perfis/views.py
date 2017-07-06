@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from perfis.models import Profile
+from perfis.models import Profile, Invitation
 
 
 def index(request):
@@ -9,13 +9,20 @@ def index(request):
 
 def profile(request, profile_id):
     profile = Profile.objects.get(id=profile_id)
-    return render(request, 'profile.html', {'profile': profile})
+    return render(request, 'profile.html', {'profile': profile,
+                                            'logged_profile': get_logged_profile(request)})
 
 
 def invite(request, invited_profile):
     profile = Profile.objects.get(id=invited_profile)
     logged_profile = get_logged_profile(request)
     logged_profile.invite(profile)
+    return redirect('index')
+
+
+def accept(request, invitation_id):
+    invitation = Invitation.objects.get(id=invitation_id)
+    invitation.accept()
     return redirect('index')
 
 
