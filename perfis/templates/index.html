@@ -13,7 +13,9 @@
             {% if profiles %}
             <ul class="list-group">
                 {% for profile in profiles %}
-                <li class="list-group-item"><a href="{% url 'detail' profile.id %}">{{ profile.name }} / {{ profile.email }}</a></li>
+                <li class="list-group-item">
+                    <a href="{% url 'detail' profile.id %}">{{ profile.name }} / {{ profile.email }}</a>
+                </li>
                 {% endfor %}
             </ul>
             {% else %}
@@ -22,6 +24,29 @@
         </div>
     </div>
     <!-- End Profiles -->
+
+    <!-- Contacts -->
+    <div class="panel panel-default">
+        {% with contacts_total=logged_profile.contacts.count %}
+        <div class="panel-heading">
+            <strong>Você tem {{ contacts_total }} contato{{ contacts_total | pluralize }}</strong>
+        </div>
+        <div class="panel-body">
+            {% if contacts_total > 0 %}
+            <ul class="list-group">
+                {% for contact in logged_profile.contacts.all %}
+                <li class="list-group-item">
+                    <a href="{% url 'detail' contact.id %}">{{ contact.name }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <p>Você não possui contatos no momento ;(</p>
+            {% endif %}
+        </div>
+        {% endwith %}
+    </div>
+    <!-- End Contacts -->
 
     <!-- Invitations -->
     <div class="panel panel-default">

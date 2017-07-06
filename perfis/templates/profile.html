@@ -1,6 +1,4 @@
-{% extends "base.html" %} 
-
-{% block body %}
+{% extends "base.html" %} {% block body %}
 
 <!-- Content -->
 <div class="row">
@@ -16,7 +14,11 @@
         </address>
         <!-- End Address -->
 
+        {% if is_contact %}
+        <div class="well well-sm">Vocês já estão conectados</div>
+        {% else %}
         <a href="{% url 'invite' profile.id %}">Convidar</a>
+        {% endif %}
     </div>
 </div>
 <!-- End Content -->

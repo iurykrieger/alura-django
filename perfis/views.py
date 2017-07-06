@@ -9,8 +9,11 @@ def index(request):
 
 def profile(request, profile_id):
     profile = Profile.objects.get(id=profile_id)
+    logged_profile = get_logged_profile(request)
+    is_contact = profile in logged_profile.contacts.all()
     return render(request, 'profile.html', {'profile': profile,
-                                            'logged_profile': get_logged_profile(request)})
+                                            'logged_profile': logged_profile,
+                                            'is_contact': is_contact})
 
 
 def invite(request, invited_profile):
